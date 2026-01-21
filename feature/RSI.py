@@ -35,7 +35,10 @@ def RSI(df, index='日期', symbol='股票代码', value='收盘', window=14):
     rsi = vbt.RSI.run(wide_df, window=window).rsi
 
     """ 删除 index 索引(窗口大小), levels=0:删除第0层索引, axis=1: 删除列的索引, inplace=True:原地删除 """
-    return rsi.vbt.drop_levels(levels=0, axis=1, inplace=True)
+    rsi.vbt.drop_levels(levels=0, axis=1, inplace=True)
+
+    return rsi
+
 
 
 if __name__ == '__main__':
@@ -47,6 +50,6 @@ if __name__ == '__main__':
             STOCK_ZH_A_HIST_DAILY_HFQ.收盘]
     )
 
-    rsi = RSI(df, index='日期', column='股票代码', value='收盘', window=14)
+    rsi = RSI(df, index='日期', symbol='股票代码', value='收盘', window=14)
 
     print(rsi)

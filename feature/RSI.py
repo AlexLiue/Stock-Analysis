@@ -34,7 +34,7 @@ def RSI(df, index='日期', symbol='股票代码', value='收盘', window=14):
     """ 使用 vectorbt 并行计算每只股票的 RSI ,窗口大小 14 """
     rsi = vbt.RSI.run(wide_df, window=window).rsi
 
-    """ 删除 index 索引, levels=0:删除第0层索引, axis=1: 删除列的索引, inplace=True:原地删除 """
+    """ 删除 index 索引(窗口大小), levels=0:删除第0层索引, axis=1: 删除列的索引, inplace=True:原地删除 """
     return rsi.vbt.drop_levels(levels=0, axis=1, inplace=True)
 
 
